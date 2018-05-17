@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var userNameTxt: UITextField!
+    @IBOutlet weak var saveUserbtn: UIButton!
+
+    var ref: DatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        //saveUserbtn.addTarget(self, action: #selector(saveUser), for: Touchs)
+        ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
+        ref.updateChildValues(["something" : 123]) // example writing data
+    
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
 
 }
 
