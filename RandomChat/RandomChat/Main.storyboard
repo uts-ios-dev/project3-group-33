@@ -296,10 +296,10 @@
             </objects>
             <point key="canvasLocation" x="2208.8000000000002" y="116.49175412293854"/>
         </scene>
-        <!--CreateRoomController-->
+        <!--CreateRoomViewController-->
         <scene sceneID="DLT-th-3JS">
             <objects>
-                <viewController title="CreateRoomController" id="ldr-bi-ZRE" customClass="CreateRoomViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CreateRoomViewController" id="ldr-bi-ZRE" customClass="CreateRoomViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ejI-hC-SW6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,6 +356,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="yod-s5-uzc"/>
         <segue reference="aAb-up-RJ1"/>
-        <segue reference="IrJ-hh-8ds"/>
+        <segue reference="TIB-Mh-bmq"/>
     </inferredMetricsTieBreakers>
 </document>

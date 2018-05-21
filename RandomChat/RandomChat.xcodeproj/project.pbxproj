@@ -14,6 +14,8 @@
 		6932831520A6CCFF0083EBAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6932831420A6CCFF0083EBAE /* Assets.xcassets */; };
 		6932831820A6CCFF0083EBAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6932831620A6CCFF0083EBAE /* LaunchScreen.storyboard */; };
 		6938607220B2AA7F00B65439 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938607120B2AA7F00B65439 /* CreateRoomViewController.swift */; };
+		6938607420B2AFC800B65439 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938607320B2AFC800B65439 /* RoomsViewController.swift */; };
+		6938607620B2B05400B65439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938607520B2B05400B65439 /* SettingsViewController.swift */; };
 		98E62E6332BE3E7A195AFB35 /* Pods_RandomChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FAC8A04CF0C02876CE5D30 /* Pods_RandomChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		6932831720A6CCFF0083EBAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6932831920A6CCFF0083EBAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6938607120B2AA7F00B65439 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		6938607320B2AFC800B65439 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		6938607520B2B05400B65439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		981AFA610BFAA0FD090C44A3 /* Pods-RandomChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RandomChat/Pods-RandomChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A3DC34E6C3BD70E772C45782 /* Pods-RandomChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-RandomChat/Pods-RandomChat.release.xcconfig"; sourceTree = "<group>"; };
 		A8FAC8A04CF0C02876CE5D30 /* Pods_RandomChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +82,8 @@
 				6932830D20A6CCFF0083EBAE /* AppDelegate.swift */,
 				6932830F20A6CCFF0083EBAE /* ViewController.swift */,
 				6938607120B2AA7F00B65439 /* CreateRoomViewController.swift */,
+				6938607320B2AFC800B65439 /* RoomsViewController.swift */,
+				6938607520B2B05400B65439 /* SettingsViewController.swift */,
 				692FBCF420AD3CC4005B6E67 /* Main.storyboard */,
 				6932831420A6CCFF0083EBAE /* Assets.xcassets */,
 				6932831620A6CCFF0083EBAE /* LaunchScreen.storyboard */,
@@ -217,6 +223,8 @@
 				6932831020A6CCFF0083EBAE /* ViewController.swift in Sources */,
 				6938607220B2AA7F00B65439 /* CreateRoomViewController.swift in Sources */,
 				6932830E20A6CCFF0083EBAE /* AppDelegate.swift in Sources */,
+				6938607620B2B05400B65439 /* SettingsViewController.swift in Sources */,
+				6938607420B2AFC800B65439 /* RoomsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
