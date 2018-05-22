@@ -12,10 +12,35 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class RoomsViewController: UIViewController {
+/*func getRooms() -> [Room] {
+    
+    var rooms: [Room] = []
     
     
+    return [Room(name: "", users: [""])]
+}*/
+
+class RoomsViewController: UIViewController /*UITableViewDataSource, UITableViewDelegate*/ {
     
+    //@IBOutlet weak var roomsTableView: UITableView!
+    
+    /*var rooms = getRooms()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rooms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "room", for: indexPath)
+        
+        let room = rooms[indexPath.row]
+        
+        cell.textLabel?.text = room.name
+        cell.detailTextLabel?.text = "\(room.num)"
+        
+        return cell
+    }
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         
