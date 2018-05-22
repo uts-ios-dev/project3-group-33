@@ -17,14 +17,16 @@ import FirebaseAuth
     var rooms: [Room] = []
     
     
-    return [Room(name: "", users: [""])]
+    return rooms
 }*/
 
 class RoomsViewController: UIViewController /*UITableViewDataSource, UITableViewDelegate*/ {
     
-    //@IBOutlet weak var roomsTableView: UITableView!
+    @IBOutlet weak var roomsTableView: UITableView!
     
-    /*var rooms = getRooms()
+    var ref: DatabaseReference!
+    var refHandle: UInt!
+    var rooms = [Room]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rooms.count
@@ -40,7 +42,22 @@ class RoomsViewController: UIViewController /*UITableViewDataSource, UITableView
         
         return cell
     }
-    */
+    
+    func fetchRooms() {
+        refHandle = ref.child("rooms").observe(.childAdded, with: { (snapshot) in
+            let results = snapshot.value as? [String : AnyObject]
+                
+            let roomName = results?["roomName"]
+            let users = results?["users"]
+            let numOfUsers = results?["numOfUsers"]
+            let room = Room(name: roomName as! String, users: users as! [String], num: numOfUsers as! String)
+            self.rooms.append(room)
+            DispatchQueue.main.async {
+                self.roomsTableView.reloadData()
+            }            
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,8 +65,8 @@ class RoomsViewController: UIViewController /*UITableViewDataSource, UITableView
         
         // Do any additional setup after loading the view, typically from a nib.
         //saveUserbtn.addTarget(self, action: #selector(saveUser), for: Touchs)
-        //ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-        //ref.updateChildValues(["something" : 123]) // example writing data
+        ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
+        fetchRooms()
         
     }
 }

@@ -25,16 +25,24 @@ class ViewController: UIViewController {
                 return
             }
             else {
-                print("Sign in with id:", user!.user.uid)
-                let isAnonymous = user!.user.isAnonymous  // true
-                let uid = user!.user.uid
                 self.ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-                let userRef = self.ref.child("users").child(uid)
-                var value = ["name": "unknown"]
+                
+                print("Sign in with id:", user!.user.uid)
+                let username = self.userNameTxt.text!
+                
+                let isAnonymous = user!.user.isAnonymous  // true
+                
+                if self.userNameTxt.text!.count > 0 {
+                    self.ref.child("users").child(user!.user.uid).setValue(["name" : username])
+                }
+                else {
+                    self.ref.child("users").child(user!.user.uid).setValue(["name" : "unknown"])
+                }
+                /*var value = ["name": "unknown"]
                 if self.userNameTxt.text!.count > 0 {
                     value = ["name": self.userNameTxt.text!]
                 }
-                userRef.updateChildValues(value)
+                userRef.updateChildValues(value)*/
             }
         }
     }
