@@ -13,7 +13,7 @@
         <!--MainViewController-->
         <scene sceneID="k8z-pK-KQr">
             <objects>
-                <viewController title="MainViewController" id="Vdg-Ue-dfM" customClass="ViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="MainViewController" id="Vdg-Ue-dfM" customClass="LoginViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4lj-bW-WbB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
                                 <state key="normal" title="Enter"/>
                                 <connections>
                                     <action selector="createUser:" destination="Vdg-Ue-dfM" eventType="touchUpInside" id="68U-Mx-xf2"/>
-                                    <segue destination="Blh-77-S8W" kind="show" id="re8-Zx-RCF"/>
+                                    <segue destination="hn6-TL-No2" kind="show" id="Ny4-UG-Co7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rC4-iN-H0U">
@@ -99,140 +99,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1F5-Iz-SRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165.59999999999999" y="819.94002998500753"/>
+            <point key="canvasLocation" x="-953" y="881"/>
         </scene>
-        <!--YourRoomsViewController-->
-        <scene sceneID="iie-2F-8wj">
+        <!--iFChat-->
+        <scene sceneID="n1Y-IZ-zmA">
             <objects>
-                <viewController title="YourRoomsViewController" id="hRL-Zu-MmQ" customClass="RoomsViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KQx-pQ-lVz">
+                <viewController id="hiE-oa-xFI" customClass="MainTableViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="trN-zf-r8B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your rooms:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-wI-2zr">
-                                <rect key="frame" x="16" y="20" width="119" height="38"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="21k-dT-PXh">
+                                <rect key="frame" x="0.0" y="79" width="375" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="dvf-ZN-FJ2"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Online Rooms"/>
+                                    <segment title="My Rooms"/>
+                                    <segment title="Users"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-dg-47N">
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o41-r4-nTd">
-                                <rect key="frame" x="16" y="66" width="343" height="525"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvU-gt-aWE">
-                                <rect key="frame" x="16" y="599" width="60" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Blh-77-S8W" kind="show" id="zyM-2e-xts"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="j3U-wy-hOo"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-J6-kcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="621.60000000000002" y="-586.05697151424295"/>
-        </scene>
-        <!--RoomsViewController-->
-        <scene sceneID="Jvi-wy-doI">
-            <objects>
-                <viewController title="RoomsViewController" id="Blh-77-S8W" customClass="RoomsViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="onp-dl-Ygj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-hx-1Rj">
-                                <rect key="frame" x="16" y="134" width="343" height="457"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="room" textLabel="nEa-aT-apC" detailTextLabel="tv6-tw-uwU" style="IBUITableViewCellStyleValue1" id="WWs-5O-q5n">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="aZO-wB-3tv">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WWs-5O-q5n" id="hXr-CK-P4X">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aZO-wB-3tv" id="C2r-Wa-7Bx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nEa-aT-apC">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tv6-tw-uwU">
-                                                    <rect key="frame" x="284" y="12" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hiE-oa-xFI" id="epF-AE-ddu"/>
+                                    <outlet property="delegate" destination="hiE-oa-xFI" id="EKI-ig-BvX"/>
+                                    <outlet property="prefetchDataSource" destination="hiE-oa-xFI" id="4Mc-7i-lDc"/>
+                                </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rly-1S-fXS">
-                                <rect key="frame" x="241" y="599" width="118" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Create room"/>
-                                <connections>
-                                    <segue destination="ldr-bi-ZRE" kind="show" id="rj6-3W-RX6"/>
-                                </connections>
-                            </button>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="search specific rooms" translatesAutoresizingMaskIntoConstraints="NO" id="EPR-Od-SjA">
-                                <rect key="frame" x="16" y="67" width="343" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BG5-d3-cs2">
-                                <rect key="frame" x="16" y="599" width="60" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Vdg-Ue-dfM" kind="show" id="IrJ-hh-8ds"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chatrooms: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKx-Sd-D8B">
-                                <rect key="frame" x="16" y="20" width="118" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmG-5m-KaR">
-                                <rect key="frame" x="257" y="20" width="102" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Your rooms"/>
-                                <connections>
-                                    <segue destination="hRL-Zu-MmQ" kind="show" id="78V-Of-czV"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="2oT-UU-aqX"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="21k-dT-PXh" secondAttribute="trailing" id="br5-pn-9hp"/>
+                            <constraint firstItem="21k-dT-PXh" firstAttribute="top" secondItem="c6v-iS-38j" secondAttribute="top" constant="15" id="pXI-Ys-JvF"/>
+                            <constraint firstItem="21k-dT-PXh" firstAttribute="leading" secondItem="trN-zf-r8B" secondAttribute="leading" id="xa2-sk-mkd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c6v-iS-38j"/>
                     </view>
+                    <navigationItem key="navigationItem" title="iFChat" id="xlc-Lq-JLh">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="awP-nO-p2C">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="handleLogout:" destination="hiE-oa-xFI" id="56n-oe-xbu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="EaR-aP-2QL"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="roomsTableView" destination="hWA-hx-1Rj" id="2ZC-m6-HOl"/>
+                        <outlet property="LogoutBtn" destination="awP-nO-p2C" id="RFk-K9-leC"/>
+                        <outlet property="navTitle" destination="xlc-Lq-JLh" id="65W-nh-pOH"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9uu-kk-iGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdk-Ud-ILU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621.60000000000002" y="117.39130434782609"/>
+            <point key="canvasLocation" x="1261.5999999999999" y="116.49175412293854"/>
         </scene>
         <!--ChatViewController-->
         <scene sceneID="fH8-Rf-b86">
             <objects>
-                <viewController title="ChatViewController" id="ObC-Zh-HTZ" customClass="RoomsViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ChatViewController" id="ObC-Zh-HTZ" customClass="UITableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="epg-Ak-eMl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,18 +187,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Blh-77-S8W" kind="show" id="wjZ-Nm-62i"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17s-ti-VWW">
                                 <rect key="frame" x="241" y="599" width="118" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Leave room"/>
-                                <connections>
-                                    <segue destination="Blh-77-S8W" kind="show" id="kNj-Cu-KQ0"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-jI-T2I">
                                 <rect key="frame" x="16" y="61" width="91" height="30"/>
@@ -278,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZR-S8-I1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1397.5999999999999" y="117.39130434782609"/>
+            <point key="canvasLocation" x="2158" y="1156"/>
         </scene>
         <!--RoomInfoViewController-->
         <scene sceneID="V0T-jD-Iv4">
@@ -302,11 +234,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oE3-C7-b4T">
-                                <rect key="frame" x="16" y="122" width="343" height="469"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWN-nV-QXQ">
                                 <rect key="frame" x="16" y="599" width="60" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,6 +243,11 @@
                                     <segue destination="ObC-Zh-HTZ" kind="show" id="voP-03-C5k"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oE3-C7-b4T">
+                                <rect key="frame" x="16" y="122" width="343" height="469"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="7vb-7A-H8v"/>
@@ -323,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKp-bZ-hND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="116.49175412293854"/>
+            <point key="canvasLocation" x="2887.1999999999998" y="116.49175412293854"/>
         </scene>
         <!--CreateRoomViewController-->
         <scene sceneID="DLT-th-3JS">
@@ -360,7 +292,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Create room"/>
                                 <connections>
-                                    <action selector="createRoom:" destination="ldr-bi-ZRE" eventType="touchUpInside" id="q4e-se-irX"/>
+                                    <action selector="createRoom:" destination="ldr-bi-ZRE" eventType="touchUpInside" id="8zd-3p-WF2"/>
                                     <segue destination="ObC-Zh-HTZ" kind="show" id="yod-s5-uzc"/>
                                 </connections>
                             </button>
@@ -369,27 +301,40 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Blh-77-S8W" kind="show" id="aAb-up-RJ1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1gF-UG-vV7"/>
                     </view>
                     <connections>
-                        <outlet property="createRoomBtn" destination="En6-IM-51l" id="U3e-xE-TeL"/>
-                        <outlet property="roomNameTxt" destination="xGB-v6-pd2" id="B0H-SH-OO4"/>
+                        <outlet property="createRoomBtn" destination="En6-IM-51l" id="S2N-Kl-dWK"/>
+                        <outlet property="roomNameTxt" destination="xGB-v6-pd2" id="EGV-Cc-7i3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Km-H0-HOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="622" y="820"/>
+            <point key="canvasLocation" x="569" y="1434"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NIR-k2-dHw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hn6-TL-No2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bnk-vZ-irs">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hiE-oa-xFI" kind="relationship" relationship="rootViewController" id="6A0-8c-7cd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jra-aw-YZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="527" y="117"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="voP-03-C5k"/>
-        <segue reference="wjZ-Nm-62i"/>
-        <segue reference="IrJ-hh-8ds"/>
     </inferredMetricsTieBreakers>
 </document>

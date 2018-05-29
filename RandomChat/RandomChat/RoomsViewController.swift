@@ -22,7 +22,7 @@ import FirebaseAuth
 
 class RoomsViewController: UIViewController /*UITableViewDataSource, UITableViewDelegate*/ {
     
-    @IBOutlet weak var roomsTableView: UITableView!
+   /* @IBOutlet weak var roomsTableView: UITableView!
     
     var ref: DatabaseReference!
     var refHandle: UInt!
@@ -56,17 +56,17 @@ class RoomsViewController: UIViewController /*UITableViewDataSource, UITableView
                 self.roomsTableView.reloadData()
             }            
         })
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.gray
+        //self.view.backgroundColor = UIColor.gray
         
         // Do any additional setup after loading the view, typically from a nib.
         //saveUserbtn.addTarget(self, action: #selector(saveUser), for: Touchs)
-        ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-        fetchRooms()
+        //ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
+        //fetchRooms()
         
     }
 }

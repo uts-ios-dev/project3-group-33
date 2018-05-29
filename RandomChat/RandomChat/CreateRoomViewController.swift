@@ -20,45 +20,21 @@ struct Room {
 
 class CreateRoomViewController: UIViewController {
     
-    @IBOutlet weak var roomNameTxt: UITextField!
     @IBOutlet weak var createRoomBtn: UIButton!
-    
+    @IBOutlet weak var roomNameTxt: UITextField!
     var ref: DatabaseReference!
-    
-    let currentUserID = Auth.auth().currentUser!.uid
-    
-    @IBAction func createRoom(_ sender: UIButton) {
-        self.ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-        
-        self.ref.child("users").child(currentUserID).observe(DataEventType.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            if let userName = value?["name"] as? String {
-                print(userName)
-                let currentUserName = userName
-                
-                var users: [String] = []
-                users.append(currentUserName)
-                let roomName = self.roomNameTxt.text!
-                
-                if (roomName.count > 0) {
-                    //let newRoom = Room(name: roomName, users: users)
-                    self.ref.child("rooms").childByAutoId().setValue(["roomName": roomName, "users": users, "numOfUsers" : "1"])
-                }
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
+    let userID = Auth.auth().currentUser!.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.gray
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        //saveUserbtn.addTarget(self, action: #selector(saveUser), for: Touchs)
-        //ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-        //ref.updateChildValues(["something" : 123]) // example writing data
-        
     }
+
+    @IBAction func createRoom(_ sender: UIButton) {
+        guard let roomName = roomNameTxt.text else {print("Please enter a room name"); return}
+        self.ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
+        let roomRef = self.ref.child("rooms").childByAutoId()
+        let value = ["name": roomName, "usersID": userID]
+        roomRef.updateChildValues(value)
+    }
+    
 }

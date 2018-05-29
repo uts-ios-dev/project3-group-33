@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var userNameTxt: UITextField!
     @IBOutlet weak var createUser: UIButton!
@@ -38,25 +38,12 @@ class ViewController: UIViewController {
                 else {
                     self.ref.child("users").child(user!.user.uid).setValue(["name" : "unknown"])
                 }
-                /*var value = ["name": "unknown"]
-                if self.userNameTxt.text!.count > 0 {
-                    value = ["name": self.userNameTxt.text!]
-                }
-                userRef.updateChildValues(value)*/
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.gray
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        //saveUserbtn.addTarget(self, action: #selector(saveUser), for: Touchs)
-        //ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-        //ref.updateChildValues(["something" : 123]) // example writing data
-    
-    }
+        }
 }
 
