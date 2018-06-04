@@ -119,6 +119,9 @@
                                     <segment title="My Rooms"/>
                                     <segment title="Users"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChangeIndex:" destination="hiE-oa-xFI" eventType="valueChanged" id="7Oh-CY-txW"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-dg-47N">
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
@@ -156,10 +159,16 @@
                                 <action selector="handleLogout:" destination="hiE-oa-xFI" id="56n-oe-xbu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="EaR-aP-2QL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EaR-aP-2QL">
+                            <connections>
+                                <segue destination="ldr-bi-ZRE" kind="show" id="zQP-SD-vpc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="LogoutBtn" destination="awP-nO-p2C" id="RFk-K9-leC"/>
+                        <outlet property="mySegment" destination="21k-dT-PXh" id="vfW-SV-1fn"/>
+                        <outlet property="myTableView" destination="CFd-dg-47N" id="yfP-4V-B46"/>
                         <outlet property="navTitle" destination="xlc-Lq-JLh" id="65W-nh-pOH"/>
                     </connections>
                 </viewController>
@@ -210,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZR-S8-I1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="1156"/>
+            <point key="canvasLocation" x="2496.8000000000002" y="1155.472263868066"/>
         </scene>
         <!--RoomInfoViewController-->
         <scene sceneID="V0T-jD-Iv4">
@@ -306,6 +315,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1gF-UG-vV7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Lok-Mb-ie9"/>
                     <connections>
                         <outlet property="createRoomBtn" destination="En6-IM-51l" id="S2N-Kl-dWK"/>
                         <outlet property="roomNameTxt" destination="xGB-v6-pd2" id="EGV-Cc-7i3"/>
@@ -313,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Km-H0-HOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="569" y="1434"/>
+            <point key="canvasLocation" x="927" y="1155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NIR-k2-dHw">
@@ -335,6 +345,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="voP-03-C5k"/>
+        <segue reference="yod-s5-uzc"/>
     </inferredMetricsTieBreakers>
 </document>

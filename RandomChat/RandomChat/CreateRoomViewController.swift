@@ -12,12 +12,6 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-struct Room {
-    let name: String
-    let users: [String]
-    let num: String
-}
-
 class CreateRoomViewController: UIViewController {
     
     @IBOutlet weak var createRoomBtn: UIButton!
@@ -33,7 +27,7 @@ class CreateRoomViewController: UIViewController {
         guard let roomName = roomNameTxt.text else {print("Please enter a room name"); return}
         self.ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
         let roomRef = self.ref.child("rooms").childByAutoId()
-        let value = ["name": roomName, "usersID": userID]
+        let value = ["roomName": roomName, "numOfUsers": "1", "users": userID]
         roomRef.updateChildValues(value)
     }
     

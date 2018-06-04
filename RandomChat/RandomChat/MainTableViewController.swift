@@ -11,6 +11,11 @@ import Firebase
 
 class MainTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBAction func segmentChangeIndex(_ sender: UISegmentedControl) {
+        myTableView.reloadData()
+    }
+    @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var mySegment: UISegmentedControl!
     @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var LogoutBtn: UIBarButtonItem!
     var users = [User]()
@@ -24,21 +29,52 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func fetchUsers(){
-        ref.child("users").observeSingleEvent(of: .childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let user = User()
-                user.setValuesForKeys(dictionary)
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+            let value = child.value as? NSDictionary
+            let name = value?["name"] as? String ?? ""
+            let user = User(name: name)
+            self.users.append(user)
                 print(user.name!)
+                
             }
         }, withCancel: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        var numOfRows = 0
+        switch(mySegment.selectedSegmentIndex){
+        case 0:
+            numOfRows = 1
+            break
+        case 1:
+            numOfRows = 1
+            break
+        case 2:
+            numOfRows = users.count
+            break
+        default:
+            break
+        }
+        return numOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        switch(mySegment.selectedSegmentIndex){
+        case 0:
+            myCell.textLabel!.text = "none111"
+            break
+        case 1:
+           myCell.textLabel!.text = "none222"
+            break
+        case 2:
+            let user = users[indexPath.row]
+            myCell.textLabel!.text = user.name
+            break
+        default:
+            break
+        }
         return myCell
     }
     
