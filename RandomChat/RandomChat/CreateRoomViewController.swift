@@ -16,7 +16,9 @@ class CreateRoomViewController: UIViewController {
     
     @IBOutlet weak var createRoomBtn: UIButton!
     @IBOutlet weak var roomNameTxt: UITextField!
+    
     var ref: DatabaseReference!
+    
     let userID = Auth.auth().currentUser!.uid
     
     override func viewDidLoad() {
@@ -25,9 +27,14 @@ class CreateRoomViewController: UIViewController {
 
     @IBAction func createRoom(_ sender: UIButton) {
         guard let roomName = roomNameTxt.text else {print("Please enter a room name"); return}
+        
         self.ref = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
         let roomRef = self.ref.child("rooms").childByAutoId()
-        let value = ["roomName": roomName, "numOfUsers": "1", "users": userID]
+        
+        var users: [String] = []
+        users.append(userID)
+        
+        let value = ["roomName": roomName, "numOfUsers": "1", "users": users] as [String : Any]
         roomRef.updateChildValues(value)
     }
     
