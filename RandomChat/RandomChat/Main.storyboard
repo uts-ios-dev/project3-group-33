@@ -230,6 +230,9 @@
                                     <constraint firstAttribute="width" constant="87" id="uDx-g6-foh"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sendMsg:" destination="ObC-Zh-HTZ" eventType="touchUpInside" id="zNs-1U-A6s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -248,6 +251,10 @@
                     <navigationItem key="navigationItem" title="Chat Room" id="7fc-7b-FWz">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="m6I-Fy-a0c"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="inputText" destination="Ddp-NP-QxM" id="NHE-FC-EFd"/>
+                        <outlet property="sendBtn" destination="zCU-Lx-3Nf" id="mKq-Tu-3Oo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZR-S8-I1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
