@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import JSQMessagesViewController
 
-class ChatRoomViewController: UIViewController {
+class ChatRoomViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 

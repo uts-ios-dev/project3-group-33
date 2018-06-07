@@ -20,16 +20,13 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var LogoutBtn: UIBarButtonItem!
     var users = [User]()
     
-    var ref: DatabaseReference! = Database.database().reference(fromURL: "https://randomchat-a2052.firebaseio.com/")
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
     }
     
     func fetchUsers(){
-        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        Constants.refs.databaseUser.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
             let value = child.value as? NSDictionary
             let name = value?["name"] as? String ?? ""
@@ -92,7 +89,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
             present(viewController!,animated: true, completion: nil )
         } else {
             let uid = Auth.auth().currentUser!.uid
-            ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            Constants.refs.databaseUser.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                             }, withCancel: nil)
         }
     }
