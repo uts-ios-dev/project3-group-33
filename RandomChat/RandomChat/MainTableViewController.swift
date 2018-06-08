@@ -19,6 +19,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var LogoutBtn: UIBarButtonItem!
     var users = [User]()
+    var rooms = [Room]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,27 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
             let user = User(name: name)
             self.users.append(user)
                 print(user.name!)
-                
             }
         }, withCancel: nil)
     }
+    
+    /*func fetchRooms() {
+        Constants.refs.databaseRoom.observe(.childAdded, with: { (snapshot) in
+            let results = snapshot.value as? [String : AnyObject]
+            
+            let roomName = results?["roomName"]
+            let users = results?["users"]
+            let numOfUsers = results?["numOfUsers"]
+            let messages = results?["messages"]
+            
+            let room = Room(roomName: roomName as! String, users: users as! [String], numOfUsers: numOfUsers as! String, messages: messages as! [Message])
+            self.rooms.append(room)
+            
+            DispatchQueue.main.async {
+                self.roomsTableView.reloadData()
+            }
+        })
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numOfRows = 0
