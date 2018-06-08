@@ -11,11 +11,11 @@ import UIKit
 
 class Room: NSObject {
     let roomName: String?
-    let users: [String]
+    let users: [User]
     let numOfUsers: Int
     let messages: [Message]
     
-    init(roomName: String?, users: [String], numOfUsers: Int, messages: [Message]){
+    init(roomName: String?, users: [User], numOfUsers: Int, messages: [Message]){
         self.roomName = roomName
         self.users = users
         self.numOfUsers = numOfUsers

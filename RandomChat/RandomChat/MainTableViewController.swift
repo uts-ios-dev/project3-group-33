@@ -24,43 +24,46 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
+        fetchRooms()
     }
     
     func fetchUsers(){
         Constants.refs.databaseUser.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
-            let value = child.value as? NSDictionary
-            let name = value?["name"] as? String ?? ""
-            let user = User(name: name)
-            self.users.append(user)
+                let value = child.value as? NSDictionary
+                let name = value?["name"] as? String ?? ""
+                
+                let user = User(name: name)
+                self.users.append(user)
+                
                 print(user.name!)
             }
         }, withCancel: nil)
     }
     
-    /*func fetchRooms() {
-        Constants.refs.databaseRoom.observe(.childAdded, with: { (snapshot) in
-            let results = snapshot.value as? [String : AnyObject]
-            
-            let roomName = results?["roomName"]
-            let users = results?["users"]
-            let numOfUsers = results?["numOfUsers"]
-            let messages = results?["messages"]
-            
-            let room = Room(roomName: roomName as! String, users: users as! [String], numOfUsers: numOfUsers as! String, messages: messages as! [Message])
-            self.rooms.append(room)
-            
-            DispatchQueue.main.async {
-                self.roomsTableView.reloadData()
+    func fetchRooms(){
+        Constants.refs.databaseRoom.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let value = child.value as? NSDictionary
+                let roomName = value?["roomName"] as? String ?? ""
+                let numOfUsers = Int(value?["numOfUsers"] as? String ?? "0")
+                let users = [User]()
+                let messages = [Message]()
+                
+                let room = Room(roomName: roomName, users: users, numOfUsers: numOfUsers!, messages: messages)
+                self.rooms.append(room)
+                
+                print(room.roomName!)
+                print(room.numOfUsers)
             }
-        })
-    }*/
+        }, withCancel: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numOfRows = 0
         switch(mySegment.selectedSegmentIndex){
         case 0:
-            numOfRows = 1
+            numOfRows = rooms.count
             break
         case 1:
             numOfRows = 1
@@ -78,7 +81,9 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         switch(mySegment.selectedSegmentIndex){
         case 0:
-            myCell.textLabel!.text = "none111"
+            let room = rooms[indexPath.row]
+            myCell.textLabel!.text = room.roomName
+            myCell.detailTextLabel!.text = "\(room.numOfUsers)"
             break
         case 1:
            myCell.textLabel!.text = "none222"

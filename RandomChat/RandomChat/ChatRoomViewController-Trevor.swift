@@ -28,6 +28,8 @@ class ChatRoomViewControllerTrevor: JSQMessagesViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        // set up messages
         let roomId = defaults.string(forKey: "roomId")
         
         let user = Auth.auth().currentUser!

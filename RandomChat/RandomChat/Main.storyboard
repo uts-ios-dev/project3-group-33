@@ -286,6 +286,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="EEv-X1-XjU"/>
                     </view>
+                    <navigationItem key="navigationItem" id="C8G-KJ-s8N">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="rxA-cr-xam">
+                            <connections>
+                                <segue destination="hiE-oa-xFI" kind="show" id="jgO-QY-sVx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hhf-Tn-fkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -406,7 +413,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hiE-oa-xFI" kind="relationship" relationship="rootViewController" id="6A0-8c-7cd"/>
+                        <segue destination="hiE-oa-xFI" kind="relationship" relationship="rootViewController" id="nTo-nk-n1A"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jra-aw-YZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -414,4 +421,7 @@
             <point key="canvasLocation" x="527" y="117"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nTo-nk-n1A"/>
+    </inferredMetricsTieBreakers>
 </document>
