@@ -39,7 +39,7 @@ class CreateRoomViewController: UIViewController {
         var users: [String] = []
         users.append(userID)
         
-        let room = ["roomName": roomName, "numOfUsers": "1", "users": users, "messages": messages] as [String : Any]
+        let room = ["roomId": roomId, "roomName": roomName, "numOfUsers": "1", "users": users, "messages": messages] as [String : Any]
         roomRef.updateChildValues(room)
     }
 }

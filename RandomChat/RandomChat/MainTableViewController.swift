@@ -21,6 +21,8 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     var users = [User]()
     var rooms = [Room]()
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUsers()
@@ -45,12 +47,13 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         Constants.refs.databaseRoom.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let value = child.value as? NSDictionary
+                let roomId = value?["roomId"] as? String ?? ""
                 let roomName = value?["roomName"] as? String ?? ""
                 let numOfUsers = Int(value?["numOfUsers"] as? String ?? "0")
                 let users = [User]()
                 let messages = [Message]()
                 
-                let room = Room(roomName: roomName, users: users, numOfUsers: numOfUsers!, messages: messages)
+                let room = Room(roomId: roomId, roomName: roomName, users: users, numOfUsers: numOfUsers!, messages: messages)
                 self.rooms.append(room)
                 
                 print(room.roomName!)
@@ -83,7 +86,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         case 0:
             let room = rooms[indexPath.row]
             myCell.textLabel!.text = room.roomName
-            myCell.detailTextLabel!.text = "\(room.numOfUsers)"
+            myCell.detailTextLabel!.text = "\(room.numOfUsers) user(s)"
             break
         case 1:
            myCell.textLabel!.text = "none222"
@@ -91,11 +94,20 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         case 2:
             let user = users[indexPath.row]
             myCell.textLabel!.text = user.name
+            myCell.detailTextLabel!.text = ""
             break
         default:
             break
         }
         return myCell
+    }
+    
+    // room selected, get room id and set current room to userdefaults
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let roomId = self.rooms[indexPath.row].roomId
+        defaults.set(roomId, forKey: "roomId")
+        
+        
     }
     
     @IBAction func handleLogout(_ sender: UIBarButtonItem) {

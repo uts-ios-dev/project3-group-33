@@ -31,6 +31,12 @@ class ChatRoomViewControllerTrevor: JSQMessagesViewController {
         
         // set up messages
         let roomId = defaults.string(forKey: "roomId")
+        Constants.refs.databaseRoom.child(roomId!).observe(.value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            
+            let roomName = value?["roomName"] as? String
+            self.navigationItem.title = roomName
+        })
         
         let user = Auth.auth().currentUser!
         
