@@ -114,6 +114,33 @@ class ChatRoomViewControllerTrevor: JSQMessagesViewController {
         finishSendingMessage()
     }
     
+    @IBAction func backBtn(_ sender: UIBarButtonItem) {
+        let currentUserId = Auth.auth().currentUser?.uid
+        let roomId = defaults.string(forKey: "roomId")
+        var myRoomsId = defaults.array(forKey: "myRoomsId") as! [String]
+        
+        if let i = myRoomsId.index(of: roomId!) {
+            myRoomsId.remove(at: i)
+            defaults.set(myRoomsId, forKey: "myRoomsId")
+        }
+        
+        Constants.refs.databaseRoom.child(roomId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            var roomUsers = value?["users"] as? [String]
+            var numOfUsers = Int(value?["numOfUsers"] as? String ?? "0")!
+            
+            if let i = roomUsers?.index(of: currentUserId!) {
+                roomUsers?.remove(at: i)
+                numOfUsers = (roomUsers?.count)!
+                
+                Constants.refs.databaseRoom.child(roomId!).updateChildValues(["users" : roomUsers!])
+                Constants.refs.databaseRoom.child(roomId!).updateChildValues(["numOfUsers" : "\(numOfUsers)"])
+            }
+        })
+        
+        defaults.set("", forKey: "roomId")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

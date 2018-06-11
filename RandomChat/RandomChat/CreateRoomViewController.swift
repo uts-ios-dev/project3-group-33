@@ -31,6 +31,7 @@ class CreateRoomViewController: UIViewController {
         let roomRef = Constants.refs.databaseRoom.childByAutoId()
         
         let roomId = roomRef.key
+        var myRooms = defaults.array(forKey: "myRoomsId") as! [String]
         
         defaults.set(roomId, forKey: "roomId")
         
@@ -41,5 +42,10 @@ class CreateRoomViewController: UIViewController {
         
         let room = ["roomId": roomId, "roomName": roomName, "numOfUsers": "1", "users": users, "messages": messages] as [String : Any]
         roomRef.updateChildValues(room)
+        
+        let myNewRoom = roomId
+        myRooms.append(myNewRoom)
+        defaults.set(myRooms, forKey: "myRoomsId")
+        
     }
 }

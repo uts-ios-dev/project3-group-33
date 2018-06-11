@@ -16,7 +16,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTxt: UITextField!
     @IBOutlet weak var createUser: UIButton!
     
+    var defaults = UserDefaults.standard
+    let roomId = String()
+    let myRoomsId = [String]()
+    
     @IBAction func createUser(_ sender: UIButton) {
+        defaults.set(roomId, forKey: "roomId")
+        defaults.set(myRoomsId, forKey: "myRoomsId")
+        
         Auth.auth().signInAnonymously() { (user, error) in
             if let error = error {
                 print("Sign in failed:", error.localizedDescription)

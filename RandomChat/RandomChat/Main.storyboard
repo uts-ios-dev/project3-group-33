@@ -208,6 +208,7 @@
                     <navigationItem key="navigationItem" id="C8G-KJ-s8N">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="rxA-cr-xam">
                             <connections>
+                                <action selector="backBtn:" destination="cNa-2p-dLJ" id="1dL-lS-R9Q"/>
                                 <segue destination="hiE-oa-xFI" kind="show" id="jgO-QY-sVx"/>
                             </connections>
                         </barButtonItem>
@@ -220,7 +221,7 @@
         <!--RoomInfoViewController-->
         <scene sceneID="V0T-jD-Iv4">
             <objects>
-                <viewController title="RoomInfoViewController" id="grL-i3-4dn" customClass="RoomsViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="RoomInfoViewController" id="grL-i3-4dn" customClass="RoomViewController" customModule="RandomChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fxm-Yc-qx0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

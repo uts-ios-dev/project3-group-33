@@ -20,6 +20,9 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var LogoutBtn: UIBarButtonItem!
     var users = [User]()
     var rooms = [Room]()
+    var myRooms = [Room]()
+    var myRoomsId = [String]()
+    let currentUserId = Auth.auth().currentUser?.uid
     
     let defaults = UserDefaults.standard
     
@@ -27,9 +30,10 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         fetchUsers()
         fetchRooms()
+        fetchMyRooms()
     }
     
-    func fetchUsers(){
+    func fetchUsers() {
         Constants.refs.databaseUser.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let value = child.value as? NSDictionary
@@ -43,14 +47,14 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         }, withCancel: nil)
     }
     
-    func fetchRooms(){
+    func fetchRooms() {
         Constants.refs.databaseRoom.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let value = child.value as? NSDictionary
                 let roomId = value?["roomId"] as? String ?? ""
                 let roomName = value?["roomName"] as? String ?? ""
                 let numOfUsers = Int(value?["numOfUsers"] as? String ?? "0")
-                let users = [User]()
+                let users = [String]()
                 let messages = [Message]()
                 
                 let room = Room(roomId: roomId, roomName: roomName, users: users, numOfUsers: numOfUsers!, messages: messages)
@@ -62,6 +66,29 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         }, withCancel: nil)
     }
     
+    func fetchMyRooms() {
+        self.myRoomsId = defaults.array(forKey: "myRoomsId") as! [String]
+        
+        Constants.refs.databaseRoom.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let value = child.value as? NSDictionary
+                let roomId = value?["roomId"] as? String ?? ""
+                for r in self.myRoomsId {
+                    if (r == roomId) {
+                        let roomName = value?["roomName"] as? String ?? ""
+                        let numOfUsers = Int(value?["numOfUsers"] as? String ?? "0")
+                        let users = [String]()
+                        let messages = [Message]()
+                        
+                        let myRoom = Room(roomId: roomId, roomName: roomName, users: users, numOfUsers: numOfUsers!, messages: messages)
+                        self.myRooms.append(myRoom)
+                    }
+                }
+            }
+        }, withCancel: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numOfRows = 0
         switch(mySegment.selectedSegmentIndex){
@@ -69,7 +96,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
             numOfRows = rooms.count
             break
         case 1:
-            numOfRows = 1
+            numOfRows = myRooms.count
             break
         case 2:
             numOfRows = users.count
@@ -89,7 +116,9 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
             myCell.detailTextLabel!.text = "\(room.numOfUsers) user(s)"
             break
         case 1:
-           myCell.textLabel!.text = "none222"
+            let myRoom = myRooms[indexPath.row]
+            myCell.textLabel!.text = myRoom.roomName
+            myCell.detailTextLabel!.text = "\(myRoom.numOfUsers) user(s)"
             break
         case 2:
             let user = users[indexPath.row]
@@ -107,7 +136,22 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         let roomId = self.rooms[indexPath.row].roomId
         defaults.set(roomId, forKey: "roomId")
         
+        if (self.myRoomsId.contains(roomId!) == false) {
+            self.myRoomsId.append(roomId!)
+            defaults.set(myRoomsId, forKey: "myRoomsId")
+        }
         
+        Constants.refs.databaseRoom.child(roomId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            var roomUsers = value?["users"] as? [String]
+            
+            if (roomUsers?.contains(self.currentUserId!) == false) {
+                roomUsers?.append(self.currentUserId!)
+            }
+            
+            self.rooms[indexPath.row].numOfUsers = (roomUsers?.count)!
+            Constants.refs.databaseRoom.child(roomId!).updateChildValues(["numOfUsers" : "\(self.rooms[indexPath.row].numOfUsers)"])
+        })
     }
     
     @IBAction func handleLogout(_ sender: UIBarButtonItem) {
