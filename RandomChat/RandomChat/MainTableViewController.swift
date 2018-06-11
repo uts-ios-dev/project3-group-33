@@ -133,6 +133,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     // room selected, get room id and set current room to userdefaults
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (mySegment.selectedSegmentIndex == 0){
         let roomId = self.rooms[indexPath.row].roomId
         defaults.set(roomId, forKey: "roomId")
         
@@ -151,7 +152,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
             
             self.rooms[indexPath.row].numOfUsers = (roomUsers?.count)!
             Constants.refs.databaseRoom.child(roomId!).updateChildValues(["numOfUsers" : "\(self.rooms[indexPath.row].numOfUsers)"])
-        })
+        })}
     }
     
     @IBAction func handleLogout(_ sender: UIBarButtonItem) {
